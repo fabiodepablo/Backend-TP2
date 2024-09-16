@@ -1,0 +1,44 @@
+[
+  {
+    "title": "carne",
+    "description": "costilla",
+    "code": "FDP111",
+    "price": 100,
+    "status": true,
+    "stock": 20,
+    "category": "Carnes",
+    "thumbnails": [
+      "URL_de_la_imagen1",
+      "URL_de_la_imagen2"
+    ],
+    "id": 1
+  },
+  {
+    "title": "pollo",
+    "description": "pollo",
+    "code": "FDP112",
+    "price": 100,
+    "status": true,
+    "stock": 20,
+    "category": "Carnes",
+    "thumbnails": [
+      "URL_de_la_imagen1",
+      "URL_de_la_imagen2"
+    ],
+    "id": 2
+  },
+  {
+    "id": 3,
+    "title": "pasta",
+    "description": "pasta",
+    "code": "FDP113",
+    "price": 100,
+    "status": true,
+    "stock": 20,
+    "category": "tallarines",
+    "thumbnails": [
+      "URL_de_la_imagen1",
+      "URL_de_la_imagen2"
+    ]
+  }
+]

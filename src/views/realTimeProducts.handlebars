@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos en Tiempo Real</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Recibir la lista de productos y actualizar la vista
+    socket.on('products', (products) => {
+      const productList = document.getElementById('product-list');
+      productList.innerHTML = '';
+      products.forEach(product => {
+        const li = document.createElement('li');
+        li.textContent = `${product.id} - ${product.title} - $${product.price}`;
+        productList.appendChild(li);
+      });
+    });
+
+    // Función para agregar un producto
+    function addProduct() {
+      const title = document.getElementById('title').value;
+      const price = document.getElementById('price').value;
+      socket.emit('newProduct', { title, price });
+      document.getElementById('title').value = '';
+      document.getElementById('price').value = '';
+    }
+
+    // Función para eliminar un producto
+    function deleteProduct() {
+      const id = document.getElementById('productId').value;
+      socket.emit('deleteProduct', id);
+      document.getElementById('productId').value = '';
+    }
+  </script>
+</head>
+<body>
+  <h1>Productos en Tiempo Real</h1>
+  <ul id="product-list"></ul>
+
+  <h2>Agregar Producto</h2>
+  <input type="text" id="title" placeholder="Nombre del producto">
+  <input type="number" id="price" placeholder="Precio del producto">
+  <button onclick="addProduct()">Agregar Producto</button>
+
+  <h2>Eliminar Producto</h2>
+  <input type="text" id="productId" placeholder="ID del producto">
+  <button onclick="deleteProduct()">Eliminar Producto</button>
+</body>
+</html>
